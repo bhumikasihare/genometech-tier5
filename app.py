@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # --- LIVE LINKS ---
-MAIN_WEBSITE_URL = "https://bhumikasihare.github.io/genometech-studio/"
+MAIN_WEBSITE_URL = "https://genometechstudio.github.io"
 CHECKOUT_TIER5_URL = "https://genometech-checkout.streamlit.app/?tier=5"
 
 # --- BLUISH & REDDISH THEME + SINGLE CENTER MOVING TIER 5 LOGO ---
@@ -104,6 +104,14 @@ st.markdown(
     '  border-radius: 10px !important;'
     '  padding: 0.65rem 1.2rem !important;'
     '}'
+    '.gts-brand {'
+    '  text-decoration: none;'
+    '  transition: opacity 0.2s ease;'
+    '  cursor: pointer;'
+    '}'
+    '.gts-brand:hover {'
+    '  opacity: 0.85;'
+    '}'
     '</style>'
     '<div class="center-tier5-logo">🦠</div>',
     unsafe_allow_html=True
@@ -131,13 +139,13 @@ df_taxa = get_tier5_demo_data()
 top_left, top_right = st.columns([3.2, 1.8])
 with top_left:
     st.markdown(
-        '<div style="display:flex; align-items:center; gap:14px;">'
-        '<div style="width:56px; height:56px; border-radius:14px; background:rgba(239,68,68,0.18); border:1px solid #ef4444; display:flex; align-items:center; justify-content:center; font-size:2rem;">🦠</div>'
-        '<div>'
-        '<div style="font-size:0.76rem; text-transform:uppercase; letter-spacing:0.15em; color:#f87171; font-weight:800;">Tier 5 Live Deliverable Showcase • Pre-Loaded 16S rRNA Amplicon Cohort</div>'
-        '<div style="font-size:2rem; font-weight:900; color:#ffffff; letter-spacing:-0.02em;">Microbiome & <span style="color:#ef4444;">16S rRNA Profiling</span></div>'
-        '</div>'
-        '</div>',
+        f'<div style="display:flex; align-items:center; gap:14px;">'
+        f'<div style="width:56px; height:56px; border-radius:14px; background:rgba(239,68,68,0.18); border:1px solid #ef4444; display:flex; align-items:center; justify-content:center; font-size:2rem;">🦠</div>'
+        f'<div>'
+        f'<div style="font-size:0.76rem; text-transform:uppercase; letter-spacing:0.15em; color:#f87171; font-weight:800;">Tier 5 Live Deliverable Showcase • Pre-Loaded 16S rRNA Amplicon Cohort</div>'
+        f'<a href="{MAIN_WEBSITE_URL}" class="gts-brand" style="font-size:2rem; font-weight:900; color:#ffffff; letter-spacing:-0.02em;">Microbiome & <span style="color:#ef4444;">16S rRNA Profiling</span></a>'
+        f'</div>'
+        f'</div>',
         unsafe_allow_html=True
     )
 with top_right:
@@ -338,7 +346,7 @@ with tab4:
             '• <b>Deliverable Files:</b> High-resolution SVG/PNG abundance charts & taxa summary reports'
             '</div>'
             '</div>',
-            unsafe_allow_html=True
+            unsafe_allow_html=Thread if False else True
         )
     with m_right:
         st.markdown("##### 📉 Phylum-Level Relative Abundance (%) Across Cohorts")
